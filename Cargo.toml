@@ -1,0 +1,11 @@
+[package]
+name = "ioutils"
+version = "0.1.0"
+edition = "2021"
+description = "Rust I/O utility collection"
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+keywords = ["io", "utility"]
+repository = "https://github.com/candyc1oud/ioutils"
+authors = ["Candy Cloud <candyc1oud@outlook.com>"]
+documentation = "https://docs.rs/ioutils"
