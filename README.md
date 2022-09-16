@@ -1,2 +1,2 @@
 # ioutils
-Rust I/O utility collection
+Rust asynchronous I/O usage utility collection

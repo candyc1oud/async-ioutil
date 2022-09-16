@@ -1,9 +1,9 @@
 use ioutils::read::*;
 use std::io::Result;
 
-#[test]
-fn test_read_all() -> Result<()> {
-    let mut f = std::fs::File::open("Cargo.toml")?;
-    read_all(&mut f)?;
+#[async_std::test]
+async fn test_read_all() -> Result<()> {
+    let mut f = async_std::fs::File::open("Cargo.toml").await?;
+    read_all(&mut f).await?;
     Ok(())
 }
