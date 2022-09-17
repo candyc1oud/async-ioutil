@@ -9,3 +9,11 @@ async fn test_copy_buffer() -> Result<()> {
     copy_buffer(&mut f, &mut v, &mut buffer).await?;
     Ok(())
 }
+
+#[async_std::test]
+async fn test_copy() -> Result<()> {
+    let mut v: Vec<u8> = Vec::new();
+    let mut f = async_std::fs::File::open("Cargo.toml").await?;
+    copy(&mut f, &mut v).await?;
+    Ok(())
+}

@@ -19,3 +19,13 @@ pub async fn copy_buffer<R: AsyncReadExt + Unpin, W: AsyncWriteExt + Unpin>(
     }
     Ok(n)
 }
+
+pub async fn copy<R: AsyncReadExt + Unpin, W: AsyncWriteExt + Unpin>(
+    reader: &mut R,
+    writer: &mut W,
+) -> Result<usize> {
+    const BUF_SIZE: usize = 32 * 1024;
+    let mut buffer = [0u8; BUF_SIZE];
+    let n = copy_buffer(reader, writer, &mut buffer).await?;
+    Ok(n)
+}
