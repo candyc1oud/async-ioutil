@@ -20,6 +20,7 @@ where
     Ok(n)
 }
 
+/// Copy data from reader to writer.
 pub async fn copy<R, W>(reader: &mut R, writer: &mut W) -> Result<usize>
 where
     R: AsyncReadExt + Unpin,
