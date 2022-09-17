@@ -1,4 +1,4 @@
-use ioutils::read::*;
+use async_ioutil::read::*;
 use std::io::Result;
 
 #[async_std::test]

@@ -1,4 +1,4 @@
-use ioutils::copy::*;
+use async_ioutil::copy::*;
 use std::io::Result;
 
 #[async_std::test]
