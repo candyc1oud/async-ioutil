@@ -11,7 +11,7 @@ where
     let mut n = 0;
     loop {
         let nn = reader.read(&mut buffer[..]).await?;
-        if n == 0 {
+        if nn == 0 {
             break;
         }
         n += nn;
