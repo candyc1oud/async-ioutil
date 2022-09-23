@@ -2,7 +2,7 @@
 name = "async-ioutil"
 version = "0.1.0"
 edition = "2021"
-description = "Rust asynchronous I/O usage utility collection"
+description = "A collection of Rust asynchronous I/O utilities"
 license = "MIT OR Apache-2.0"
 readme = "README.md"
 keywords = ["io", "utility"]
