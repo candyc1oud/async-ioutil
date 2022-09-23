@@ -1,8 +1,8 @@
 # async-ioutil
 
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/candyc1oud/ioutils/CI?logo=github-actions&style=flat-square)](https://github.com/candyc1oud/async-ioutil/actions/workflows/ci.yml)
-[![Crates.io](https://img.shields.io/crates/d/iotuils?logo=rust&style=flat-square)](https://crates.io/crates/async-ioutil)
-[![Crates.io](https://img.shields.io/crates/v/ioutils?logo=fitbit&style=flat-square)](https://crates.io/crates/async-ioutil)
+[![Crates.io](https://img.shields.io/crates/d/async-ioutil?logo=rust&style=flat-square)](https://crates.io/crates/async-ioutil)
+[![Crates.io](https://img.shields.io/crates/v/async-ioutil?logo=fitbit&style=flat-square)](https://crates.io/crates/async-ioutil)
 
 ### A collection of Rust asynchronous I/O utilities
 
