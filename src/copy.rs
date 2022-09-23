@@ -8,16 +8,17 @@ where
     R: AsyncRead + Unpin,
     W: AsyncWrite + Unpin,
 {
-    let mut n = 0;
+    let mut written = 0;
     loop {
-        let nn = reader.read(&mut buffer[..]).await?;
-        if nn == 0 {
+        let nr = reader.read(&mut buffer[..]).await?;
+        if nr > 0 {
+            let nw = writer.write(&buffer[..nr]).await?;
+            written += nw;
+        } else {
             break;
         }
-        n += nn;
-        writer.write_all(&buffer[..nn]).await?;
     }
-    Ok(n)
+    Ok(written)
 }
 
 /// Copy data from reader to writer.
