@@ -9,7 +9,7 @@ keywords = ["io", "utility"]
 categories = ["asynchronous"]
 repository = "https://github.com/candyc1oud/ioutils"
 authors = ["Candy Cloud <candyc1oud@outlook.com>"]
-documentation = "https://docs.rs/ioutils"
+documentation = "https://docs.rs/async-ioutil"
 
 [dependencies]
 futures = "0.3.24"
