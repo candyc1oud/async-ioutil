@@ -1,0 +1,61 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  changelog:
+    name: Generate changelog
+    runs-on: ubuntu-latest
+    outputs:
+      release_body: ${{ steps.release.outputs.release_body }}
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - uses: orhun/git-cliff-action@v1
+        id: git-cliff
+        with:
+          config: config/cliff.toml
+          args: -vv --latest --strip header
+        env:
+          OUTPUT: CHANGES.md
+
+      - name: Set the release body
+        id: release
+        shell: bash
+        run: |
+          r=$(cat ${{ steps.git-cliff.outputs.changelog }})
+          r="$(printf "$r" | tail -n +3)"
+          r="${r//'%'/'%25'}"
+          r="${r//$'\n'/'%0A'}"
+          r="${r//$'\r'/'%0D'}"
+          echo "::set-output name=release_body::$r"
+
+  publish-github:
+    runs-on: ubuntu-latest
+    needs: changelog
+    steps:
+      - name: Upload the binary releases
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref }}
+          body: ${{ needs.changelog.outputs.release_body }}
+
+  publish-crates-io:
+    needs: publish-github
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: Publish
+        run: cargo publish --allow-dirty --locked --token ${{ secrets.CARGO_REGISTRY_TOKEN }}
