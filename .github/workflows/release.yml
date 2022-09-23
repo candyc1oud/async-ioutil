@@ -38,11 +38,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: changelog
     steps:
-      - name: Upload the binary releases
-        uses: svenstaro/upload-release-action@v2
+      - uses: softprops/action-gh-release@v1
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           body: ${{ needs.changelog.outputs.release_body }}
 
   publish-crates-io:
