@@ -2,7 +2,7 @@ use futures::{AsyncRead, AsyncReadExt, AsyncWrite, AsyncWriteExt};
 use std::io::Result;
 use std::marker::Unpin;
 
-/// Copy data from reader to writer.
+/// Copy data from reader to writer with buffer.
 pub async fn copy_buffer<R, W>(reader: &mut R, writer: &mut W, buffer: &mut [u8]) -> Result<usize>
 where
     R: AsyncRead + Unpin,
@@ -21,7 +21,7 @@ where
     Ok(written)
 }
 
-/// Copy data from reader to writer.
+/// Copy data from reader to writer without buffer.
 pub async fn copy<R, W>(reader: &mut R, writer: &mut W) -> Result<usize>
 where
     R: AsyncRead + Unpin,
